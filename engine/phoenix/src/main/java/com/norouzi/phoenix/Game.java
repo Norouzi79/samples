@@ -2,6 +2,7 @@ package com.norouzi.phoenix;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
     public static final int WIDTH = 1280;
@@ -9,13 +10,16 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     private boolean running = false;
     private Handler handler;
-
+    private Random r;
 
     public Game() {
         new Window(WIDTH, HEIGHT, "Let's build a game", this);
         handler = new Handler();
         handler.addObject(new Player(100, 100, ID.PLAYER));
-        handler.addObject(new Player(200, 500, ID.PLAYER));
+        r = new Random();
+        for (int i = 0; i < 50; i++) {
+            handler.addObject(new Player(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.PLAYER));
+        }
     }
 
     public static void main(String[] args) {
@@ -79,7 +83,7 @@ public class Game extends Canvas implements Runnable {
 
         Graphics g = bs.getDrawGraphics();
         g.setColor(Color.BLACK);
-        g.fillRect(0, 0 , WIDTH, HEIGHT);
+        g.fillRect(0, 0, WIDTH, HEIGHT);
         handler.render(g);
         g.dispose();
         bs.show();

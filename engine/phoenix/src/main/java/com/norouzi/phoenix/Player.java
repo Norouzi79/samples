@@ -1,11 +1,15 @@
 package com.norouzi.phoenix;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Player extends GameObject{
+    Random r = new Random();
+
     public Player(int x, int y, ID id) {
         super(x, y, id);
-        velX = 1;
+        velX = r.nextInt(5) + 1;
+        velY = r.nextInt(5);
     }
 
     @Override
