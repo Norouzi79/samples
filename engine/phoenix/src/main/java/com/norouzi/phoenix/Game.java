@@ -8,10 +8,14 @@ public class Game extends Canvas implements Runnable {
     public static final int HEIGHT = WIDTH / 12 * 9;
     private Thread thread;
     private boolean running = false;
+    private Handler handler;
 
 
     public Game() {
         new Window(WIDTH, HEIGHT, "Let's build a game", this);
+        handler = new Handler();
+        handler.addObject(new Player(100, 100, ID.PLAYER));
+        handler.addObject(new Player(200, 500, ID.PLAYER));
     }
 
     public static void main(String[] args) {
@@ -62,6 +66,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void tick() {
+        handler.tick();
     }
 
     private void render() {
@@ -75,6 +80,7 @@ public class Game extends Canvas implements Runnable {
         Graphics g = bs.getDrawGraphics();
         g.setColor(Color.BLACK);
         g.fillRect(0, 0 , WIDTH, HEIGHT);
+        handler.render(g);
         g.dispose();
         bs.show();
     }
