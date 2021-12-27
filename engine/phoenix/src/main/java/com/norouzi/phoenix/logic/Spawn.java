@@ -3,6 +3,7 @@ package com.norouzi.phoenix.logic;
 import com.norouzi.phoenix.Game;
 import com.norouzi.phoenix.logic.interfaces.HUD;
 import com.norouzi.phoenix.logic.players.Enemy;
+import com.norouzi.phoenix.logic.players.FastEnemy;
 import com.norouzi.phoenix.logic.players.ID;
 
 import java.util.Random;
@@ -22,13 +23,20 @@ public class Spawn {
 
     public void tick() {
         scoreKeep++;
-        if (scoreKeep >= 500) {
-            scoreKeep = 0;
-            hud.setScore(0);
-            hud.setLevel(hud.getLevel() + 1);
-            if (hud.getLevel() >= 2) {
-                handler.addObject(new Enemy(random.nextInt(Game.WIDTH - 34), random.nextInt(Game.HEIGHT - 64), ID.ENEMY, handler));
+        if (hud.HEALTH >= 1) {
+            if (scoreKeep >= 500) {
+                scoreKeep = 0;
+                hud.setScore(0);
+                hud.setLevel(hud.getLevel() + 1);
+                if (hud.getLevel() >= 2) {
+                    handler.addObject(new Enemy(random.nextInt(Game.WIDTH - 34), random.nextInt(Game.HEIGHT - 64), ID.ENEMY, handler));
+                }
+                if (hud.getLevel() >= 3) {
+                    handler.addObject(new FastEnemy(random.nextInt(Game.WIDTH - 34), random.nextInt(Game.HEIGHT - 64), ID.FAST_ENEMY, handler));
+                }
             }
+        } else {
+            System.exit(0);
         }
     }
 }

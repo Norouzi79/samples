@@ -6,14 +6,14 @@ import com.norouzi.phoenix.logic.Handler;
 
 import java.awt.*;
 
-public class Enemy extends GameObject {
+public class FastEnemy extends GameObject {
     private Handler handler;
 
-    public Enemy(int x, int y, ID id, Handler handler) {
+    public FastEnemy(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
-            velX = 5;
-            velY = 5;
+            velX = 15;
+            velY = 15;
     }
 
     public void tick() {
@@ -26,16 +26,16 @@ public class Enemy extends GameObject {
         if (x <= 0 || x >= Game.WIDTH - 16) {
             velX *= -1;
         }
-        Trail trail = new Trail(x, y, ID.TRAIL, handler, Color.RED, 16, 16, 0.025f);
+        Trail trail = new Trail(x, y, ID.TRAIL, handler, Color.CYAN, 8, 8, 0.1f);
         handler.addObject(trail);
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 16, 16);
+        return new Rectangle(x, y, 8, 8);
     }
 
     public void render(Graphics g) {
-        g.setColor(Color.RED);
-        g.fillRect(x, y, 16, 16);
+        g.setColor(Color.CYAN);
+        g.fillRect(x, y, 8, 8);
     }
 }

@@ -4,5 +4,6 @@ public enum ID {
     PLAYER(),
     PLAYER2(),
     ENEMY(),
+    FAST_ENEMY(),
     TRAIL();
 }
