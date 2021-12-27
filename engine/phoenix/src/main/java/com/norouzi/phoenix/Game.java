@@ -15,11 +15,14 @@ public class Game extends Canvas implements Runnable {
     public Game() {
         handler = new Handler();
         new Window(WIDTH, HEIGHT, "Let's build a game", this);
-        handler.addObject(new Player(100, 100, ID.PLAYER));
+        handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.PLAYER));
+        handler.addObject(new Player(WIDTH / 2 + 64, HEIGHT / 2 + 64, ID.PLAYER2));
+        handler.addObject(new Player(WIDTH / 2 - 128, HEIGHT / 2 - 128, ID.ENEMY));
         r = new Random();
-        for (int i = 0; i < 50; i++) {
+        this.addKeyListener(new KeyInput(handler));
+        /*for (int i = 0; i < 50; i++) {
             handler.addObject(new Player(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.PLAYER));
-        }
+        }*/
     }
 
     public static void main(String[] args) {
@@ -62,7 +65,7 @@ public class Game extends Canvas implements Runnable {
             frames++;
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                System.out.println("FPS: " + frames);
+                //System.out.println("FPS: " + frames);
                 frames = 0;
             }
         }
