@@ -17,7 +17,8 @@ public class KeyInput extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent keyEvent) {
         int key = keyEvent.getKeyCode();
-        for (GameObject object : handler.objects) {
+        for (int i = 0; i < handler.objects.size(); i++) {
+            GameObject object = handler.objects.get(i);
             playerMovement(key, object);
             player2Movement(key, object);
             enemyMovement(key, object);
@@ -154,7 +155,8 @@ public class KeyInput extends KeyAdapter {
     @Override
     public void keyReleased(KeyEvent keyEvent) {
         int key = keyEvent.getKeyCode();
-        for (GameObject object : handler.objects) {
+        for (int i = 0; i < handler.objects.size(); i++) {
+            GameObject object = handler.objects.get(i);
             playerMovementReleased(key, object);
             player2MovementReleased(key, object);
             enemyMovementReleased(key, object);
