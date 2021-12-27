@@ -2,12 +2,16 @@ package com.norouzi.phoenix.logic.players;
 
 import com.norouzi.phoenix.Game;
 import com.norouzi.phoenix.logic.GameObject;
+import com.norouzi.phoenix.logic.Handler;
 
 import java.awt.*;
 
 public class Enemy extends GameObject {
-    public Enemy(int x, int y, ID id) {
+    private Handler handler;
+
+    public Enemy(int x, int y, ID id, Handler handler) {
         super(x, y, id);
+        this.handler = handler;
         velX = 5;
         velY = 5;
     }
@@ -27,9 +31,6 @@ public class Enemy extends GameObject {
     }
 
     public void render(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.CYAN);
-        g2d.draw(getBounds());
         g.setColor(Color.RED);
         g.fillRect(x, y, 16, 16);
     }

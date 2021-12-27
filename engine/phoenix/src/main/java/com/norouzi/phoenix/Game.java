@@ -25,12 +25,12 @@ public class Game extends Canvas implements Runnable {
         hud = new HUD();
         handler = new Handler();
         new Window(WIDTH, HEIGHT, "Let's build a game", this);
-        handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.PLAYER));
-        handler.addObject(new Player(WIDTH / 2 + 64, HEIGHT / 2 + 64, ID.PLAYER2));
+        handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.PLAYER, handler));
+        handler.addObject(new Player(WIDTH / 2 + 64, HEIGHT / 2 + 64, ID.PLAYER2, handler));
         r = new Random();
         this.addKeyListener(new KeyInput(handler));
         for (int i = 0; i < 20; i++) {
-            handler.addObject(new Enemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.ENEMY));
+            handler.addObject(new Enemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.ENEMY, handler));
         }
     }
 
