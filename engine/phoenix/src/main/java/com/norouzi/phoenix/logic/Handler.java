@@ -8,7 +8,9 @@ public class Handler implements Serializable {
     public LinkedList<GameObject> objects = new LinkedList<>();
 
     public void tick() {
-        objects.forEach(GameObject::tick);
+        for (int i = 0; i < objects.size(); i++) {
+            objects.get(i).tick();
+        }
     }
 
     public void render(Graphics g) {

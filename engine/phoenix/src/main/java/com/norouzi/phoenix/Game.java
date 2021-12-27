@@ -22,8 +22,8 @@ public class Game extends Canvas implements Runnable {
     private HUD hud;
 
     public Game() {
-        hud = new HUD();
         handler = new Handler();
+        hud = new HUD();
         new Window(WIDTH, HEIGHT, "Let's build a game", this);
         handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.PLAYER, handler));
         handler.addObject(new Player(WIDTH / 2 + 64, HEIGHT / 2 + 64, ID.PLAYER2, handler));

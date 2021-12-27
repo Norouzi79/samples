@@ -20,10 +20,14 @@ public class Enemy extends GameObject {
         x += velX;
         y += velY;
 
-        if (y <= 0 || y >= Game.HEIGHT - 32)
+        if (y <= 0 || y >= Game.HEIGHT - 32) {
             velY *= -1;
-        if (x <= 0 || x >= Game.WIDTH - 16)
+        }
+        if (x <= 0 || x >= Game.WIDTH - 16) {
             velX *= -1;
+        }
+        Trail trail = new Trail(x, y, ID.TRAIL, handler, Color.RED, 16, 16, 0.01f);
+        handler.addObject(trail);
     }
 
     public Rectangle getBounds() {
