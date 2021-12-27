@@ -22,7 +22,14 @@ public class Enemy extends GameObject {
             velX *= -1;
     }
 
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, 16, 16);
+    }
+
     public void render(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.CYAN);
+        g2d.draw(getBounds());
         g.setColor(Color.RED);
         g.fillRect(x, y, 16, 16);
     }
