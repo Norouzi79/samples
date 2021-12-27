@@ -13,7 +13,6 @@ public class KeyInput extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent keyEvent) {
         int key = keyEvent.getKeyCode();
-        System.out.println(key);
         for (GameObject object : handler.objects) {
             playerMovement(key, object);
             player2Movement(key, object);
@@ -25,19 +24,40 @@ public class KeyInput extends KeyAdapter {
         if (object.getId().equals(ID.PLAYER)) {
             //key events for player 1
             if (key == KeyEvent.VK_W) {
-                object.setY(object.getY() - 1);
+                object.setVelY(-1);
             }
 
             if (key == KeyEvent.VK_S) {
-                object.setY(object.getY() + 1);
+                object.setVelY(1);
             }
 
             if (key == KeyEvent.VK_D) {
-                object.setX(object.getX() + 1);
+                object.setVelX(1);
             }
 
             if (key == KeyEvent.VK_A) {
-                object.setX(object.getX() - 1);
+                object.setVelX(-1);
+            }
+        }
+    }
+
+    private void playerMovementReleased(int key, GameObject object) {
+        if (object.getId().equals(ID.PLAYER)) {
+            //key events for player 1
+            if (key == KeyEvent.VK_W) {
+                object.setVelY(0);
+            }
+
+            if (key == KeyEvent.VK_S) {
+                object.setVelY(0);
+            }
+
+            if (key == KeyEvent.VK_D) {
+                object.setVelX(0);
+            }
+
+            if (key == KeyEvent.VK_A) {
+                object.setVelX(0);
             }
         }
     }
@@ -46,19 +66,40 @@ public class KeyInput extends KeyAdapter {
         if (object.getId().equals(ID.PLAYER2)) {
             //key events for player 1
             if (key == KeyEvent.VK_I) {
-                object.setY(object.getY() - 1);
+                object.setVelY(-1);
             }
 
             if (key == KeyEvent.VK_K) {
-                object.setY(object.getY() + 1);
+                object.setVelY(1);
             }
 
             if (key == KeyEvent.VK_L) {
-                object.setX(object.getX() + 1);
+                object.setVelX(1);
             }
 
             if (key == KeyEvent.VK_J) {
-                object.setX(object.getX() - 1);
+                object.setVelX(-1);
+            }
+        }
+    }
+
+    private void player2MovementReleased(int key, GameObject object) {
+        if (object.getId().equals(ID.PLAYER2)) {
+            //key events for player 1
+            if (key == KeyEvent.VK_I) {
+                object.setVelY(0);
+            }
+
+            if (key == KeyEvent.VK_K) {
+                object.setVelY(0);
+            }
+
+            if (key == KeyEvent.VK_L) {
+                object.setVelX(0);
+            }
+
+            if (key == KeyEvent.VK_J) {
+                object.setVelX(0);
             }
         }
     }
@@ -67,25 +108,51 @@ public class KeyInput extends KeyAdapter {
         if (object.getId().equals(ID.ENEMY)) {
             //key events for player 1
             if (key == KeyEvent.VK_UP) {
-                object.setY(object.getY() - 1);
+                object.setVelY(-5);
             }
 
             if (key == KeyEvent.VK_DOWN) {
-                object.setY(object.getY() + 1);
+                object.setVelY(5);
             }
 
             if (key == KeyEvent.VK_RIGHT) {
-                object.setX(object.getX() + 1);
+                object.setVelX(5);
             }
 
             if (key == KeyEvent.VK_LEFT) {
-                object.setX(object.getX() - 1);
+                object.setVelX(-5);
+            }
+        }
+    }
+
+    private void enemyMovementReleased(int key, GameObject object) {
+        if (object.getId().equals(ID.ENEMY)) {
+            //key events for player 1
+            if (key == KeyEvent.VK_UP) {
+                object.setVelY(0);
+            }
+
+            if (key == KeyEvent.VK_DOWN) {
+                object.setVelY(0);
+            }
+
+            if (key == KeyEvent.VK_RIGHT) {
+                object.setVelX(0);
+            }
+
+            if (key == KeyEvent.VK_LEFT) {
+                object.setVelX(0);
             }
         }
     }
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
-        super.keyReleased(keyEvent);
+        int key = keyEvent.getKeyCode();
+        for (GameObject object : handler.objects) {
+            playerMovementReleased(key, object);
+            player2MovementReleased(key, object);
+            enemyMovementReleased(key, object);
+        }
     }
 }
