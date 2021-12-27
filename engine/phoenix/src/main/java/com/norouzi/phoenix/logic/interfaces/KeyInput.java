@@ -1,4 +1,8 @@
-package com.norouzi.phoenix;
+package com.norouzi.phoenix.logic.interfaces;
+
+import com.norouzi.phoenix.logic.GameObject;
+import com.norouzi.phoenix.logic.Handler;
+import com.norouzi.phoenix.logic.players.ID;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

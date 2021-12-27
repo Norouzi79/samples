@@ -1,11 +1,11 @@
-package com.norouzi.phoenix;
+package com.norouzi.phoenix.logic;
 
 import java.awt.*;
 import java.io.Serializable;
 import java.util.LinkedList;
 
 public class Handler implements Serializable {
-    LinkedList<GameObject> objects = new LinkedList<>();
+    public LinkedList<GameObject> objects = new LinkedList<>();
 
     public void tick() {
         objects.forEach(GameObject::tick);

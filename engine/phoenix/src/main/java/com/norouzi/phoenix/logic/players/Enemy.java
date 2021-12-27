@@ -1,4 +1,7 @@
-package com.norouzi.phoenix;
+package com.norouzi.phoenix.logic.players;
+
+import com.norouzi.phoenix.Game;
+import com.norouzi.phoenix.logic.GameObject;
 
 import java.awt.*;
 

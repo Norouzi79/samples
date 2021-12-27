@@ -1,4 +1,6 @@
-package com.norouzi.phoenix;
+package com.norouzi.phoenix.logic.interfaces;
+
+import com.norouzi.phoenix.Game;
 
 import javax.swing.*;
 import java.awt.*;

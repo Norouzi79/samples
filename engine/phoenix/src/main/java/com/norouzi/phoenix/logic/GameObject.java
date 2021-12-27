@@ -1,5 +1,6 @@
-package com.norouzi.phoenix;
+package com.norouzi.phoenix.logic;
 
+import com.norouzi.phoenix.logic.players.ID;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package com.norouzi.phoenix;
+package com.norouzi.phoenix.logic.players;
 
 public enum ID {
     PLAYER(),

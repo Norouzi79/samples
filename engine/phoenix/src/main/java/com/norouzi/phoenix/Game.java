@@ -1,5 +1,13 @@
 package com.norouzi.phoenix;
 
+import com.norouzi.phoenix.logic.Handler;
+import com.norouzi.phoenix.logic.interfaces.HUD;
+import com.norouzi.phoenix.logic.interfaces.KeyInput;
+import com.norouzi.phoenix.logic.interfaces.Window;
+import com.norouzi.phoenix.logic.players.Enemy;
+import com.norouzi.phoenix.logic.players.ID;
+import com.norouzi.phoenix.logic.players.Player;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
@@ -11,8 +19,10 @@ public class Game extends Canvas implements Runnable {
     private final Random r;
     private Thread thread;
     private boolean running = false;
+    private HUD hud;
 
     public Game() {
+        hud = new HUD();
         handler = new Handler();
         new Window(WIDTH, HEIGHT, "Let's build a game", this);
         handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.PLAYER));
@@ -82,6 +92,7 @@ public class Game extends Canvas implements Runnable {
 
     private void tick() {
         handler.tick();
+        hud.tick();
     }
 
     private void render() {
@@ -96,6 +107,7 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, WIDTH, HEIGHT);
         handler.render(g);
+        hud.render(g);
         g.dispose();
         bs.show();
     }
