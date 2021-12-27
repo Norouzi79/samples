@@ -6,11 +6,11 @@ import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
     public static final int WIDTH = 1280;
-    public static final int HEIGHT = WIDTH / 12 * 9;
+    public static final int HEIGHT = WIDTH / 16 * 9;
+    private final Handler handler;
+    private final Random r;
     private Thread thread;
     private boolean running = false;
-    private Handler handler;
-    private Random r;
 
     public Game() {
         handler = new Handler();

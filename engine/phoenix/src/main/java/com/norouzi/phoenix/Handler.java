@@ -1,9 +1,10 @@
 package com.norouzi.phoenix;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Handler {
+public class Handler implements Serializable {
     LinkedList<GameObject> objects = new LinkedList<>();
 
     public void tick() {
