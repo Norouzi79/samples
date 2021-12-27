@@ -26,7 +26,7 @@ public class Enemy extends GameObject {
         if (x <= 0 || x >= Game.WIDTH - 16) {
             velX *= -1;
         }
-        Trail trail = new Trail(x, y, ID.TRAIL, handler, Color.RED, 16, 16, 0.01f);
+        Trail trail = new Trail(x, y, ID.TRAIL, handler, Color.RED, 16, 16, 0.025f);
         handler.addObject(trail);
     }
 

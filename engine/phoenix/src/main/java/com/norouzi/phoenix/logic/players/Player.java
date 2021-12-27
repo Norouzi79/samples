@@ -25,11 +25,14 @@ public class Player extends GameObject {
 
         x = Game.clamp(x, 0, Game.WIDTH - 36);
         y = Game.clamp(y, 0, Game.HEIGHT - 60);
+        Trail trail = new Trail(x, y, ID.TRAIL, handler, Color.GREEN, 32, 32, 0.025f);
+        handler.addObject(trail);
         collision();
     }
 
     private void collision() {
-        for (GameObject object : handler.objects) {
+        for (int i = 0; i < handler.objects.size(); i++) {
+            GameObject object = handler.objects.get(i);
             if (object.getId().equals(ID.ENEMY)) {
                 if (getBounds().intersects(object.getBounds())) {
                     HUD.HEALTH --;

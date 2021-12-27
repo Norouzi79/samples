@@ -14,7 +14,10 @@ public class Handler implements Serializable {
     }
 
     public void render(Graphics g) {
-        objects.forEach(x -> x.render(g));
+        for (int i = 0; i < objects.size(); i++) {
+            GameObject object = objects.get(i);
+            object.render(g);
+        }
     }
 
     public void addObject(GameObject object) {

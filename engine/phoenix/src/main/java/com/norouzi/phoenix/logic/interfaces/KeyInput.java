@@ -70,7 +70,7 @@ public class KeyInput extends KeyAdapter {
 
     private void player2Movement(int key, GameObject object) {
         if (object.getId().equals(ID.PLAYER2)) {
-            //key events for player 1
+            //key events for player 2
             if (key == KeyEvent.VK_I) {
                 object.setVelY(-1);
             }
@@ -91,7 +91,7 @@ public class KeyInput extends KeyAdapter {
 
     private void player2MovementReleased(int key, GameObject object) {
         if (object.getId().equals(ID.PLAYER2)) {
-            //key events for player 1
+            //key events for player 2
             if (key == KeyEvent.VK_I) {
                 object.setVelY(0);
             }
@@ -112,7 +112,7 @@ public class KeyInput extends KeyAdapter {
 
     private void enemyMovement(int key, GameObject object) {
         if (object.getId().equals(ID.ENEMY)) {
-            //key events for player 1
+            //key events for Enemy
             if (key == KeyEvent.VK_UP) {
                 object.setVelY(-5);
             }
@@ -133,7 +133,7 @@ public class KeyInput extends KeyAdapter {
 
     private void enemyMovementReleased(int key, GameObject object) {
         if (object.getId().equals(ID.ENEMY)) {
-            //key events for player 1
+            //key events for Enemy
             if (key == KeyEvent.VK_UP) {
                 object.setVelY(0);
             }
