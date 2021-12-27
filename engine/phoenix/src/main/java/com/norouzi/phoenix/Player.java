@@ -12,13 +12,14 @@ public class Player extends GameObject {
         velY = r.nextInt(5);*/
     }
 
-    @Override
     public void tick() {
         x += velX;
         y += velY;
+
+        x = Game.clamp(x, 0, Game.WIDTH - 36);
+        y = Game.clamp(y, 0, Game.HEIGHT - 60);
     }
 
-    @Override
     public void render(Graphics g) {
         if (id.equals(ID.PLAYER))
             g.setColor(Color.BLUE);

@@ -17,17 +17,25 @@ public class Game extends Canvas implements Runnable {
         new Window(WIDTH, HEIGHT, "Let's build a game", this);
         handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.PLAYER));
         handler.addObject(new Player(WIDTH / 2 + 64, HEIGHT / 2 + 64, ID.PLAYER2));
-        handler.addObject(new Player(WIDTH / 2 - 128, HEIGHT / 2 - 128, ID.ENEMY));
         r = new Random();
         this.addKeyListener(new KeyInput(handler));
-        /*for (int i = 0; i < 50; i++) {
-            handler.addObject(new Player(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.PLAYER));
-        }*/
+        for (int i = 0; i < 20; i++) {
+            handler.addObject(new Enemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.ENEMY));
+        }
     }
 
     public static void main(String[] args) {
         System.out.println("Hello");
         new Game();
+    }
+
+    public static int clamp(int variable, int min, int max) {
+        if (variable >= max)
+            return variable = max;
+        else if (variable <= min)
+            return variable = min;
+        else
+            return variable;
     }
 
     public synchronized void start() {

@@ -18,6 +18,7 @@ public class KeyInput extends KeyAdapter {
             player2Movement(key, object);
             enemyMovement(key, object);
         }
+        if (key == KeyEvent.VK_ESCAPE) System.exit(0);
     }
 
     private void playerMovement(int key, GameObject object) {
