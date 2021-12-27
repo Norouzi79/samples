@@ -1,6 +1,7 @@
 package com.norouzi.phoenix;
 
 import com.norouzi.phoenix.logic.Handler;
+import com.norouzi.phoenix.logic.Spawn;
 import com.norouzi.phoenix.logic.interfaces.HUD;
 import com.norouzi.phoenix.logic.interfaces.KeyInput;
 import com.norouzi.phoenix.logic.interfaces.Window;
@@ -20,18 +21,18 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     private boolean running = false;
     private HUD hud;
+    private Spawn spawner;
 
     public Game() {
         handler = new Handler();
         hud = new HUD();
+        spawner = new Spawn(handler, hud);
+        r = new Random();
         new Window(WIDTH, HEIGHT, "Let's build a game", this);
         handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.PLAYER, handler));
         handler.addObject(new Player(WIDTH / 2 + 64, HEIGHT / 2 + 64, ID.PLAYER2, handler));
-        r = new Random();
+        handler.addObject(new Enemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.ENEMY, handler));
         this.addKeyListener(new KeyInput(handler));
-        for (int i = 0; i < 20; i++) {
-            handler.addObject(new Enemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.ENEMY, handler));
-        }
     }
 
     public static void main(String[] args) {
@@ -94,6 +95,7 @@ public class Game extends Canvas implements Runnable {
     private void tick() {
         handler.tick();
         hud.tick();
+        spawner.tick();
     }
 
     private void render() {
